@@ -1,6 +1,6 @@
 import pytest
 def stub():
-    return "OK"
+    return "not OK"
 
 def test_function():
     assert stub() == "OK"
