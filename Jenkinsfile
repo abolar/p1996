@@ -9,18 +9,15 @@ node("build") {
       sh "docker run -p 8888:8888 -d --name hello_app my_build"
 
     }
-    }
-node("build") {
+}
+node("test") {
 
     stage("Build") {
       sh "echo dockertest build"
     }
-    stage("Publish") {
-      sh "echo dockertest publish"
-    }
   }
-node("test_server") {
-    stage("Integration Test") {
+node("prod") {
+    stage("Deploy") {
       try {
 		sh "ls -lah"
 
