@@ -9,6 +9,15 @@ node("test_server") {
       sh "docker run -p 8888:8888 -d --name hello_app my_build"
 
     }
+    }
+    stage("Build") {
+      sh "echo dockertest build"
+    }
+    stage("Publish") {
+      sh "echo dockertest publish"
+    }
+  }
+node("test_server") {
     stage("Integration Test") {
       try {
 		sh "ls -lah"
@@ -19,11 +28,4 @@ node("test_server") {
       }finally {
         sh "docker rm -f hello_app || true"
       }
-    }
-    stage("Build") {
-      sh "echo dockertest build"
-    }
-    stage("Publish") {
-      sh "echo dockertest publish"
-    }
-  }
+}
