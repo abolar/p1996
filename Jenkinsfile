@@ -1,5 +1,6 @@
 pipeline {
 	agent {
+		dockerfile true
 		docker {
 			dockerfile true
 			label 'test_server'
