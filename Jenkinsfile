@@ -7,7 +7,7 @@ node("build") {
       sh "docker rm hello_app || true                         "
       sh "docker build -t my_build .                          "
       sh "docker run -p 8888:8888 -d --name hello_app my_build"
-
+	  sh "abc"
     }
 }
 node("test") {
@@ -24,8 +24,6 @@ node("prod") {
       }
       catch(e) {
         error "Integration Test failed"
-      }finally {
-        sh "docker rm -f hello_app || true"
       }
 }
 }
