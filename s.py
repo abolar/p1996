@@ -1,9 +1,11 @@
 import tornado.ioloop
 import tornado.web
+import os
+jenkins_sys = os.environ['jenkins_sys'])
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("Hello, World!")
+        self.write("Hello, World! - from " + jenkins_sys)
 
 def make_app():
     return tornado.web.Application([
