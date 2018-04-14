@@ -1,5 +1,5 @@
 
-node("test_server") {
+node("build") {
     checkout scm
 
     stage("Unit Test") {
@@ -10,6 +10,8 @@ node("test_server") {
 
     }
     }
+node("build") {
+
     stage("Build") {
       sh "echo dockertest build"
     }
@@ -28,4 +30,5 @@ node("test_server") {
       }finally {
         sh "docker rm -f hello_app || true"
       }
+}
 }
