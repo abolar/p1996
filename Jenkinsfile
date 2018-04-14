@@ -15,7 +15,7 @@ node("test") {
 		sh "docker rm hello_test || true                           "
 		sh "docker build -f DockerfileTest -t hello_test .         "
 		sh "docker run -p 8889:8888 -d --name hello_test hello_test"
-		sh "pytest test.py"
+		sh "/home/abolar/.local/bin/pytest test.py"
 	}
 }
 node("prod") {
