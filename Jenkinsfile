@@ -1,5 +1,5 @@
 
-node("docker-test") {
+node("test_server") {
     checkout scm
 
     stage("Unit Test") {
@@ -11,11 +11,8 @@ node("docker-test") {
     }
     stage("Integration Test") {
       try {
-        sh "docker build -t cd-demo ."
-        sh "docker rm -f cd-demo || true"
-        sh "docker run -d -p 8080:8080 --name=cd-demo cd-demo"
-        // env variable is used to set the server where go test will connect to run the test
-        sh "docker run --rm -v ${WORKSPACE}:/go/src/cd-demo --link=cd-demo -e SERVER=cd-demo golang go test cd-demo -v --run Integration"
+		sh "ls -lah"
+
       }
       catch(e) {
         error "Integration Test failed"
