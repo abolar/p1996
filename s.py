@@ -1,7 +1,7 @@
 import tornado.ioloop
 import tornado.web
 import os
-jenkins_sys = os.environ.get('jenkins_sys')
+jenkins_sys = os.environ.get('jenkins_sys', 'unknown')
 
 
 class MainHandler(tornado.web.RequestHandler):
