@@ -9,8 +9,13 @@ node("build") {
 		sh "docker run -p 8888:8888 -d --name hello_unit hello_unit"
 	}
 }
-node("test") {
+node("build")  {
 	stage("Unit Test") {
+		sh "/home/abolar/.local/bin/pytest unit_test.py"
+	}
+}
+node("test")  {
+	stage("Integration Test") {
 		sh "docker stop hello_test || true                         "
 		sh "docker rm hello_test || true                           "
 		sh "docker build -f DockerfileTest -t hello_test .         "
@@ -18,7 +23,7 @@ node("test") {
 		sh "/home/abolar/.local/bin/pytest unit_test.py"
 	}
 }
-node("prod") {
+node("prod")  {
 	stage("Deploy") {
 		try {
 			sh "docker stop hello_prod || true                         "
