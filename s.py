@@ -6,7 +6,7 @@ jenkins_sys = os.environ.get('jenkins_sys', 'unknown')
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("This is python saying hi from " + jenkins_sys)
+        self.write("<h1>This is python saying hi from " + jenkins_sys + "</h1>")
 
 def make_app():
     return tornado.web.Application([
